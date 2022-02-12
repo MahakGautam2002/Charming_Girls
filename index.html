@@ -16,7 +16,7 @@
        
     </head>
     
-<body >
+<body>
     
     
     <nav >
@@ -25,20 +25,21 @@
            
         </div>
         <div class="nav_side">
-            <a href="">Home</a>
-            <a href="">About Us</a>
-            <a href="">Documents</a>
-            <a href="">Login/Register</a>
+            <a href="home.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="documents.php">Documents</a>
+            <a href="doctors.html">Doctors</a>
+            <a href="login.php">Login/Register</a>
         </div>
     </nav>
     
     <div class="main">
         <div class="main_content">
-            <h2>HEALTH TALKS<br><br><br>
+            <h2><b>HEALTH TALKS</b><br><br><br>
             <span>
-                Helping patients to store their medical records online and securely share them. 
+              <b>  Helping patients to store their medical records online and securely share them. 
 
-                Also the platform to connect government hospitals with other government hospitals
+                Also the platform to connect government hospitals with other government hospitals</b>
                 
             </span><br><br><br>
             </h2>
@@ -48,9 +49,9 @@
             <a href="">Register</a>
             </div>
         </div> 
-     </div>
+    </div>
      <div class="features">
-        <h2>FEATURES</h2>
+        <h2><b>FEATURES</b></h2>
         <div class="features_container">
             <div class="item">
                 <div class="item_img">
@@ -74,18 +75,70 @@
            
 
         </div>
-    </div>  
-  
+    </div> 
+    <h2><b>FAQs</b></h2>
+    <div class="container">
+        <div class="row">
+            <div class="faq-wrapper">
+                
+                <div class="faq-inner">
+                    <div class="faq-item">
+                        <h3>
+                            What is HEALTH TALKS?
+                            <span class="faq-plus">&plus;</span>
+                        </h3>
+                       <div class="faq-body">
+                        It is a platform where patients can upload their medicsl records. They can reffered those records to any government hospital. 
+                        This will help patients to avoid going through the same tests and checkups, they already done.
+                       </div> 
+                    </div>
+                    <hr>
+                    <div class="faq-item">
+                        <h3>
+                            Why is HEALTH TALKS?
+                            <span class="faq-plus">&plus;</span>
+                        </h3>
+                       <div class="faq-body">
+                        It will be more convenient to store your all medical report at one platfrom. You can access these records anywhere on your smartphones. It will also help hospitals to connect with your local hospitals.
+                       </div> 
+                    </div>
+                    <hr>
+                    <div class="faq-item">
+                        <h3>
+                            What is the technology stack behind HEALTH TALKS?
+                            <span class="faq-plus">&plus;</span>
+                        </h3>
+                       <div class="faq-body">
+                       Technology stack : html/css/javascript/php/python
+                       </div> 
+                    </div>
+                    <hr>
+                    <div class="faq-item">
+                        <h3>
+                            What are the features of HEALTH TALKS?
+                            <span class="faq-plus">&plus;</span>
+                        </h3>
+                       <div class="faq-body">
+                           The records of patients are stored securely. No private information of patients is published. 
+                        
+                       </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <footer>
         <div class="footer_logo">
-            <a href="home.html"><img src="logo.png"  width="150"></a>
+            <a href="home.html"><img src="logo.png"  width="80"></a>
         </div>
         <div class="pages">
             <h3>Pages</h3>
-            <a href="">Home</a>|
-            <a href="">About Us</a>|
-            <a href="">Documents</a>|
-            <a href="">Login/Register</a>|
+            <a href="home.html">Home</a>|
+            <a href="about.html">About Us</a>|
+            <a href="documents.php">Documents</a>|
+            <a href="doctors.html">Doctors</a>|
+            <a href="login.php">Login/Register</a>
         </div>
       
         <hr>
@@ -108,7 +161,12 @@
         .then(response => alert(
             "Thanks for Contacting us! We Will Contact You Soon...")) 
         .catch(error => console.error ('Error!', error.message))
-    })
+    })  
+</script>
+<script type="text/javascript">
+    $(".faq-plus").on('click',function(){
+        $(this).parent().parent().find('.faq-body').slideToggle();
+    });
 </script>
 </body>
 </html>
