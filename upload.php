@@ -1,87 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Documents</title>
-    <link rel="stylesheet" href="styling.css">
-    <style>
+    <title>Download PDF</title>
+    <link rel="stylesheet" href="index.css">
 
-        
-        input{
-            width: 50%;
-            height: 5%;
-            border: 1px;
-            border-radius: 05px;
-            padding: 8px 15px 8px 15px;
-            margin: 10px 0px 15px 0px;
-            box-shadow: 1px 1px 2px grey;
-            font-weight: bold;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 <body>
-    <section>
     <center>
-        <h1>Enter the details with essential Documents</h1>
-        <div class="container">
-        <fieldset>
+    <div class="container">
+        <fieldset style="margin: 0%;">
             <legend>Details</legend>
-        <form action="" method="POST" enctype="multipart/form-data">
-            <label><strong>Upload the report</strong></label>
-            <input type="file" name="image" id="image"/><br>
-
-            <label><strong>username</strong></label>
-            <input type="text" name="username" id="username" placeholder="Enter username"/><br>
-
-            <label><strong>Password</strong></label>
-            <input type="number" name="password" id="password" placeholder="123**98"/><br>
-
-            
-            <input type="submit" name="Upload" value="Upload report"/><br>
-        </form>
+    <span  style="color:red;font-size: large;"> Upload image of your medical report/Prescription</span><br><br>
+    <!-- <form action='upload.php' method='POST' enctype='multipart/form-data'>
+        <input type='file' name='myfile'><br> <br>
+        <input type='submit' name='upload' value='Upload'> <br><br>
+    </form> -->
+    <form action='upload.php' method='POST' enctype='multipart/form-data'>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="abc@gmail.com">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
-    </center>  
-    </fieldset> 
-    </section>
+    
+                <!-- <input type='submit' name='upload' value='Upload'> <br><br> -->
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" aria-describedby="userHelp">
+    
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="123****2">
+        <div id="pwHelp" class="form-text">We'll never share your password with anyone else.</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="myfile" class="form-label">Document</label>
+        <input type='file' name='myfile' id="myfile" aria-describedby="userHelp"><br> <br>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out : By checking this box you confirm that all the details uploaded by you are correct</label>
+    </div>
+        <button type="submit" class="btn btn-primary" name='upload' value='upload'>Upload</button>
+    </form>
+</fieldset>
+</div>
+</center>
+        <!-- Changes -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    
+
 </body>
 </html>
-
 <?php
+error_reporting(0);
+         
+    $name=$_FILES['myfile']['name'];
+    $tmp_name=$_FILES['myfile']['tmp_name'];
+    if(move_uploaded_file($tmp_name,$name))
+    {
+        echo"File are uploaded";
 
-$connection = mysqli_connect("localhost","root","");
-$db = mysqli_select_db($connection,'patient details');
+        echo"<img src='$name' width 300 height=300>";
 
-
-if(isset($_POST['Upload'])){
-
-    $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
-    $username=$_POST['username'];
-    $Password=$_POST['password'];
-
-    $query="INSERT INTO `patient reports`(`image`,`username`,`password`) VALUES('$file','$username','$password)"; 
-    $query_run=mysqli_query($connection,$query);
-
-    if($query_run){
-
-        echo '<script type="text/javascript">alert("Report Uploaded") </script>';
     }
     else{
-        echo '<script type="text/javascript">alert("Report Not Uploaded") </script>';
+        echo"File are not uploaded";
     }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
